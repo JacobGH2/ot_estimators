@@ -152,10 +152,12 @@ def sinkhorn_cost(dist, n_iter=1):
     return cost
 
 def sinkhorn(query, ids, id_result, score_result, to_sort, n_iter=1):
+    global scores
     load_query(query)
     k1 = ids.shape[0]
     k2 = id_result.shape[0]
     for i in range(k1):
         dm = get_distance_matrix(ids[i])
         scores[i] = sinkhorn_cost(dm, n_iter)
+    scores = scores[:k1]     ### trim end from scores
     solver.select_topk(ids, scores, id_result, score_result, to_sort)
