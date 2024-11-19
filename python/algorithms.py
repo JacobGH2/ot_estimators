@@ -94,12 +94,14 @@ def exact_emd(query, ids):
     return best_id
 
 def rwmd(query, ids, id_result, score_result, to_sort):
+    global scores
     load_query(query)
     k1 = ids.shape[0]
-    k2 = result.shape[0]
+    #k2 = result.shape[0]
     for i in range(k1):
         dm = get_distance_matrix(ids[i])
         scores[i] = max(np.mean(dm.min(axis=0)), np.mean(dm.min(axis=1)))
+    scores = scores[:k1]
     solver.select_topk(ids, scores, id_result, score_result, to_sort)
 
 def lc_wmd_cost(dist, k):
@@ -118,12 +120,14 @@ def lc_wmd_cost(dist, k):
     return max(cost1, cost2)
 
 def lc_wmd(query, ids, id_result, score_result, to_sort, k_param=1):
+    global scores
     load_query(query)
     k1 = ids.shape[0]
-    k2 = result.shape[0]
+    #k2 = result.shape[0]
     for i in range(k1):
         dm = get_distance_matrix(ids[i])
         scores[i] = lc_wmd_cost(dm, k_param)
+    scores = scores[:k1]
     solver.select_topk(ids, scores, id_result, score_result, to_sort)
 
 def sinkhorn_cost(dist, n_iter=1):
