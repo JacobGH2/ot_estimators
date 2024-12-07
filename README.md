@@ -1,5 +1,5 @@
 Jacob Helhoski (JacobGH2) Contributions: Modified code to prevent bugs. Contacted researchers to receive necessary dataset files. Created query testing program.
-
+Brendan Alm (balm33) Contributions: Implemented a method of testing the algorithms individually.
 
 ## Fast approximations for geometric optimal transport
 
