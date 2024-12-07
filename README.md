@@ -1,3 +1,6 @@
+Jacob Helhoski (JacobGH2) Contributions: Modified code to prevent bugs. Contacted researchers to receive necessary dataset files. Created query testing program.
+
+
 ## Fast approximations for geometric optimal transport
 
 This repository contains the implementation of several fast approximate algorithms for geometric optimal transport (OT). Besides that, we allow to assemble these algorithms in pipelines that can be used for fast nearest neighbor search with respect to the OT distances. Most notably, we implement the classic QuadTree algorithm (Indyk, Thaper 2003) as well as its novel modification, which we call FlowTree. We also implement several other algorithms, see below for the references.
